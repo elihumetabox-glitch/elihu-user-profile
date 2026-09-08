@@ -1,9 +1,0 @@
-{
-  "/_global-error/page": "/_global-error",
-  "/_not-found/page": "/_not-found",
-  "/api/events/[slug]/route": "/api/events/[slug]",
-  "/api/events/route": "/api/events",
-  "/api/profile/route": "/api/profile",
-  "/favicon.ico/route": "/favicon.ico",
-  "/page": "/"
-}
