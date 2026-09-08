@@ -1,0 +1,10 @@
+{
+  "description": "Showcases a professional web developer's skills, projects, and experience with a modern, responsive portfolio to attract clients and employers.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
