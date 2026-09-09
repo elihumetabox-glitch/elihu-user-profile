@@ -57,7 +57,7 @@ export default function Hero() {
                 View My Work
               </button>
               <a
-                  href="/mvuracv.pdf"
+                  href="/cv.pdf"
                   download="mvuracv.pdf"
                   className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-xl transition-colors"
               >
