@@ -1,21 +1,42 @@
 "use client";
 
-import { useState } from 'react'
+import {JSX, useState} from 'react'
 import { Mail, MapPin, LinkedIn, Github, Send } from './Icons'
+import posthog from "posthog-js";
+import {sendEmail} from "@/lib/actions/contact";
 
-export default function Contact() {
+function Contact({
+  contactId = '',
+  slug = '',
+}: {
+  contactId?: string
+  slug?: string
+} = {}): JSX.Element {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
-    setForm({ name: '', email: '', subject: '', message: '' })
-    setTimeout(() => setSent(false), 5000)
+    const { success } = await sendEmail({
+      name: form.name,
+      email: form.email,
+      subject: form.subject,
+      message: form.message,
+    })
+
+    if (success) {
+      setSubmitted(true)
+      posthog.capture('email sent', form)
+      setSent(true)
+      setForm({ name: '', email: '', subject: '', message: '' })
+      setTimeout(() => setSent(false), 5000)
+    }
   }
 
   const inputClass =
@@ -71,7 +92,7 @@ export default function Contact() {
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="jordan@company.com"
+                      placeholder="exa@company.com"
                       required
                       className={inputClass}
                     />
@@ -180,3 +201,5 @@ export default function Contact() {
     </section>
   )
 }
+
+export default Contact

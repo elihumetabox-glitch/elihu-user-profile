@@ -1,4 +1,16 @@
 {
-  "node": {},
+  "node": {
+    "40e4fcdbe0b7256b726b34f42d16181cf021e1a2aa": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions/contact.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "sendEmail",
+      "filename": "lib/actions/contact.ts"
+    }
+  },
   "edge": {}
 }
